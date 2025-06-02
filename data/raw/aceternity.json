@@ -1,0 +1,14 @@
+[
+  {
+    "prompt": "Generate a UI component like 3D Card Effect",
+    "completion": "{\n  \"$schema\": \"https://ui.shadcn.com/schema/registry-item.json\",\n  \"name\": \"3d-card-effect\",\n  \"type\": \"registry:ui\",\n  \"title\": \"3D Card Effect\",\n  \"description\": \"A card perspective effect, hover over the card to elevate card elements.\",\n  \"files\": [\n    {\n      \"path\": \"registry/aceternity/3d card effect.tsx\",\n      \"content\": \"npx shadcn@latest add https://ui.aceternity.com/registry/3d-card.jsonCopy\",\n      \"type\": \"registry:ui\",\n      \"target\": \"components/aceternity/3d card effect.tsx\"\n    }\n  ]\n}"
+  },
+  {
+    "prompt": "Generate a UI component like 3D MarqueeNew",
+    "completion": "{\n  \"$schema\": \"https://ui.shadcn.com/schema/registry-item.json\",\n  \"name\": \"3d-marqueenew\",\n  \"type\": \"registry:ui\",\n  \"title\": \"3D MarqueeNew\",\n  \"description\": \"A 3D Marquee effect with grid, good for showcasing testimonials and hero sections\",\n  \"files\": [\n    {\n      \"path\": \"registry/aceternity/3d marqueenew.tsx\",\n      \"content\": \"npm i motion clsx tailwind-mergeCopy\",\n      \"type\": \"registry:ui\",\n      \"target\": \"components/aceternity/3d marqueenew.tsx\"\n    }\n  ]\n}"
+  },
+  {
+    "prompt": "Generate a UI component like 3D Pin",
+    "completion": "{\n  \"$schema\": \"https://ui.shadcn.com/schema/registry-item.json\",\n  \"name\": \"3d-pin\",\n  \"type\": \"registry:ui\",\n  \"title\": \"3D Pin\",\n  \"description\": \"A gradient pin that animates on hover, perfect for product links.\",\n  \"files\": [\n    {\n      \"path\": \"registry/aceternity/3d pin.tsx\",\n      \"content\": \"npm i motion clsx tailwind-mergeCopy\",\n      \"type\": \"registry:ui\",\n      \"target\": \"components/aceternity/3d pin.tsx\"\n    }\n  ]\n}"
+  }
+]

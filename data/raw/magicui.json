@@ -1,0 +1,6 @@
+[
+  {
+    "prompt": "Generate a UI component like Marquee",
+    "completion": "{\n  \"$schema\": \"https://ui.shadcn.com/schema/registry-item.json\",\n  \"name\": \"marquee\",\n  \"type\": \"registry:ui\",\n  \"title\": \"Marquee\",\n  \"description\": \"Search for a command to run...\",\n  \"files\": [\n    {\n      \"path\": \"registry/magicui/marquee.tsx\",\n      \"content\": \"import{ Marquee }from\\\"@/components/magicui/marquee\\\";\",\n      \"type\": \"registry:ui\",\n      \"target\": \"components/magicui/marquee.tsx\"\n    }\n  ]\n}"
+  }
+]
