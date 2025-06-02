@@ -16,7 +16,7 @@ def upload_dataset():
 
         # Login to Hugging Face Hub
         # Get token from environment variable or replace with your token
-        hf_token = os.getenv("HF_TOKEN", "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")
+        hf_token = os.getenv("HF_TOKEN", "your_huggingface_token_here")
         login(token=hf_token)
 
         # Initialize HfApi
