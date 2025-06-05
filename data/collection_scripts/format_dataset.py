@@ -9,7 +9,7 @@ def format_dataset():
 
         # Load raw data from different sources with error handling
         raw_files = {
-            "magicui": "data/raw/magicui.json",
+            "magicui": "data/raw/magicui_full.json",  # Changed from magicui.json to magicui_full.json
             "aceternity": "data/raw/aceternity.json"
         }
 
@@ -18,29 +18,52 @@ def format_dataset():
             try:
                 path = Path(file_path)
                 if not path.exists():
-                    raise FileNotFoundError(f"Raw data file not found: {file_path}")
+                    print(f"Warning: Raw data file not found, skipping: {file_path}")
+                    continue
                 
                 data = json.loads(path.read_text(encoding="utf-8"))
-                combined_data.extend(data)
+                
+                # Handle both the full data format and summary format
+                if isinstance(data, dict) and "components" in data:
+                    # This is the summary format from magicui_full.json
+                    combined_data.extend(data["components"])
+                else:
+                    # Regular format
+                    combined_data.extend(data)
+                    
                 print(f"Successfully loaded {len(data)} items from {name}")
             except Exception as e:
                 print(f"Error loading {name} data: {str(e)}")
-                raise
+                continue  # Continue with next file instead of raising
 
         # Format for fine-tuning
         formatted = []
         for item in combined_data:
             try:
+                # Handle both direct items and JSON strings in 'completion'
+                if isinstance(item, str):
+                    item = json.loads(item)
+                
+                prompt = item.get("prompt", "")
+                completion = item.get("completion", "")
+                
+                if not prompt or not completion:
+                    print(f"Skipping item with missing prompt/completion: {item}")
+                    continue
+                    
                 formatted.append({
-                    "text": f"<|prompt|>{item['prompt']}<|completion|>{item['completion']}<|endoftext|>"
+                    "text": f"<|prompt|>{prompt}<|completion|>{completion}<|endoftext|>"
                 })
-            except KeyError as e:
-                print(f"Missing required field in item: {str(e)}")
+            except (KeyError, json.JSONDecodeError) as e:
+                print(f"Error processing item: {str(e)}")
                 continue  # Skip malformed items
 
         # Save the formatted dataset
         output_path = processed_dir / "dataset.jsonl"
-        output_path.write_text("\n".join(json.dumps(item) for item in formatted), encoding="utf-8")
+        with output_path.open("w", encoding="utf-8") as f:
+            for item in formatted:
+                f.write(json.dumps(item) + "\n")
+                
         print(f"Successfully formatted and saved {len(formatted)} items to {output_path}")
 
     except Exception as e:

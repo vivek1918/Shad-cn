@@ -6,7 +6,7 @@ from huggingface_hub import login, HfApi
 def upload_dataset():
     try:
         # Verify dataset exists
-        dataset_path = Path("data/processed/dataset.jsonl")
+        dataset_path = Path("C:/Users/Vivek Vasani/OneDrive/Desktop/shadcn-llama-finetune/data/collection_scripts/data/processed/dataset.jsonl")
         if not dataset_path.exists():
             raise FileNotFoundError(f"Dataset file not found at {dataset_path}")
 
